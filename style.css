@@ -10,12 +10,11 @@ body {
   display: grid;
   width: 450px;
   height: 450px;
-  grid-template-rows: repeat(16, auto);
-  grid-template-columns: repeat(16, auto);
 }
 
 .grid-element {
   background-color: white;
+  outline: solid black
 }
 
 .hovered {
