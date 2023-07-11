@@ -1,18 +1,20 @@
 const container = document.querySelector('.container');
 const slider = document.querySelector("#range-input")
+const colorPicker = document.querySelector('#color-picker');
+let activeColor = colorPicker.value;
 
 function resize(gridSize = 16) {
   /* resize function first removes all children of the container div and inserts the specified
   amount (gridSize parameter) of squares in the container div. By default gridSize = 16*/
   reset();
   for(let i = 1; i <=  gridSize*gridSize; i++){
-      const gridElement = document.createElement('div');
-      gridElement.classList.add('grid-element');
-      container.appendChild(gridElement);
-      container.setAttribute('style', `grid-template-rows: repeat(${gridSize}, 1fr);
-      grid-template-columns: repeat(${gridSize}, 1fr);`)
-    }
-    slider.value = `${gridSize}`
+    const gridElement = document.createElement('div');
+    gridElement.classList.add('grid-element');
+    container.appendChild(gridElement);
+    container.setAttribute('style', `grid-template-rows: repeat(${gridSize}, 1fr);
+    grid-template-columns: repeat(${gridSize}, 1fr);`);
+  }
+  slider.value = `${gridSize}`;
 }
 
 resize();
@@ -30,4 +32,35 @@ function reset() {
   container.textContent = '';
 }
 
-resetButton.addEventListener('click', () =>  resize())
+resetButton.addEventListener('click', () =>  clearGrid());
+
+
+let mouseDown = false;
+container.addEventListener('mousedown', () => mouseDown = true);
+container.addEventListener('mouseup', () => mouseDown = false);
+
+container.addEventListener('mouseover', draw);
+container.addEventListener('mousedown', draw);
+
+
+function draw (event) {
+  if(mouseDown){
+    event.target.style.backgroundColor = activeColor;
+  }
+}
+
+function changeColor(color) {
+  activeColor = color;
+}
+
+
+colorPicker.addEventListener('input', (e) => {
+  activeColor = e.target.value;
+})
+
+function clearGrid() {
+  const squares = document.querySelectorAll('.grid-element');
+  squares.forEach(square => {
+    square.style.backgroundColor = 'white';
+  });
+}
