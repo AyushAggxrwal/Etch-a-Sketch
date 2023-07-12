@@ -114,6 +114,8 @@ label {
 
 .button:active {
   transform: scale(1.0);
+  background-color: #242e38;
+  color: white;
 }
 
 .active {

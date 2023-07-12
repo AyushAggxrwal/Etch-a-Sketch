@@ -66,6 +66,14 @@ function clearGrid() {
 }
 
 const eraseButton = document.getElementById('eraser')
-eraseButton.addEventListener('mousedown', () => activeColor = '#ffffff')
+eraseButton.addEventListener('mousedown', () => {
+  activeColor = '#ffffff'
+  eraseButton.classList.toggle("active")
+  drawButton.classList.remove("active")
+})
 const drawButton = document.getElementById('draw');
-drawButton.addEventListener('mousedown', () => activeColor = colorPicker.value)
+drawButton.addEventListener('mousedown', (e) => {
+  activeColor = colorPicker.value;
+  eraseButton.classList.remove("active")
+  drawButton.classList.toggle("active")
+})
