@@ -14,6 +14,7 @@ body {
   display: grid;
   width: 450px;
   height: 450px;
+  box-shadow: 10px 10px 7px #242e38;
 }
 
 .grid-element {
@@ -100,6 +101,7 @@ label {
 #color-picker, .button{
   transition: 100ms;
 }
+
 #color-picker:hover, .button:hover {
   transform: scale(1.1);
 }
@@ -108,17 +110,38 @@ label {
   border: none;
   box-shadow: 1.5px 1.5px 0.5px 0.5px #242e38;
   background-color: whitesmoke;
-  padding: 2px  
+  padding: 2px;
+  border-radius: 5px;
 }
 
 
-.button:active {
-  transform: scale(1.0);
+.button:active, .active {
+  transform: scale(1.1);
   background-color: #242e38;
   color: white;
+  box-shadow: none;
 }
 
-.active {
-  background-color: #242e38;
-  color: white;
+
+#range-input{
+appearance: none;
+background: none;
 }
+
+#range-input::-webkit-slider-runnable-track {
+  appearance: none;
+  height: 10px;
+  border: 1px;
+  border: solid black;
+  border-radius: 10px;
+}
+
+#range-input::-webkit-slider-thumb {
+  appearance: none;
+  height: 20px;
+  width: 20px; 
+  margin-top: -7px;
+  border-radius: 50%;
+  background-color: rgb(242, 235, 86);
+  box-shadow: 3px 3px 2px 1px #242e38;
+} 
