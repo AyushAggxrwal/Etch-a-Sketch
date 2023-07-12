@@ -30,7 +30,8 @@ body {
 
 .frame{
   position: absolute;
-  top: 10vh;
+  /* top: 10vh; */
+  bottom: 12vh;
   /* background-color: #d63024; */
   width: 750px;
   align-self: center;
