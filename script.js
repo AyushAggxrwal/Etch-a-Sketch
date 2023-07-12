@@ -25,13 +25,13 @@ slider.addEventListener('mouseup', () => {
   resize(slider.value);
 })
 
-const resetButton = document.getElementById('reset-button')
 
 function reset() {
   // reset function removes all the existing children of the container element
   container.textContent = '';
 }
 
+const resetButton = document.getElementById('reset-button')
 resetButton.addEventListener('click', () =>  clearGrid());
 
 
@@ -64,3 +64,8 @@ function clearGrid() {
     square.style.backgroundColor = 'white';
   });
 }
+
+const eraseButton = document.getElementById('eraser')
+eraseButton.addEventListener('mousedown', () => activeColor = '#ffffff')
+const drawButton = document.getElementById('draw');
+drawButton.addEventListener('mousedown', () => activeColor = colorPicker.value)
